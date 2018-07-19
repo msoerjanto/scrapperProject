@@ -7,15 +7,15 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage
 
 data class Card(val url : String, val name : String, val fp : String, val cp : String)
 
-class Scrapper{
-    fun scrap(){
-        println("Project Started")
-        val client = WebClient(BrowserVersion.CHROME)
-        client.options.isCssEnabled = false
-        client.options.isJavaScriptEnabled = false
-        client.options.isUseInsecureSSL = true
+class Scrapper(){
+    private val client = WebClient(BrowserVersion.CHROME).apply{
+        options.isCssEnabled = false
+        options.isJavaScriptEnabled = false
+        options.isUseInsecureSSL = true
+    }
 
-        val url = "https://www.app-sales.net/nowfree/"
+    fun scrap(url : String){
+        println("Project Started")
 
         var currUrl = url
         var nextPageArgs = "init"
@@ -60,7 +60,8 @@ class Scrapper{
     }
 }
 
-//fun main(args : Array<String>){
-//    val scrapper = Scrapper()
-//    scrapper.scrap()
-//}
+fun main(args : Array<String>){
+    val scrapper = Scrapper()
+    //scrapper.scrap("https://www.app-sales.net/nowfree/")
+    scrapper.scrap("https://www.app-sales.net/activesales/")
+}
