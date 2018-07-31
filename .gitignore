@@ -2,3 +2,6 @@
 .idea/
 gradle/
 /build
+/isGame/package-lock.json
+/isGame/node_modules
+/out
